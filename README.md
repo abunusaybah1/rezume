@@ -1,40 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Rezume Portfolio Builder
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+Portfolio Builder is a frontend web application that allows users to easily create a personal portfolio website by filling in their details through a simple form. As users input their information, a live preview of the portfolio is generated instantly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project was built as a final frontend project for ALX, focusing on user interface design, state management, and real-world frontend logic — without using any backend services.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Purpose of the Project
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+The goal of this project is to:
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Demonstrate strong understanding of frontend development concepts
+- Practice component-based architecture
+- Handle user input and dynamic data rendering
+- Persist data using browser storage
+- Build a clean and responsive user experience
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Portfolio information form (personal details, skills, projects)
+- Live portfolio preview while typing
+- Add and remove skills dynamically
+- Add and remove projects dynamically
+- Theme switching (light/dark style templates)
+- Data persistence using browser localStorage
+- Full preview page for generated portfolio
+- Responsive design for desktop and mobile screens
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js
+- TypeScript
+- TailwindCSS
+- LocalStorage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## How the Application Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. The user opens the Portfolio Builder application.
+2. The user fills in personal information, skills, and project details.
+3. The portfolio preview updates instantly as the user types.
+4. All data is saved automatically in the browser using localStorage.
+5. The user can open a full preview of the generated portfolio.
+6. The selected theme and data remain available after page refresh.
 
-## Deploy on Vercel
+## Key Frontend Concepts Demonstrated
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- Component-based architecture
+- React hooks and state management
+- Props and data flow
+- Conditional rendering
+- Dynamic list rendering
+- Browser storage (localStorage)
+- Responsive design
+- Type safety with TypeScript

@@ -14,6 +14,7 @@ export interface PortfolioData{
     location: string;
     email: string;
     linkedin: string;
+    github: string;
     about: string;
     skills: string[];
     projects: Project[];

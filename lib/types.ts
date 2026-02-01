@@ -20,3 +20,8 @@ export interface PortfolioData{
     projects: Project[];
     theme: Theme;
 }
+
+export interface BuilderProps{
+    data: PortfolioData;
+    onChange: (data:PortfolioData) => void;
+}

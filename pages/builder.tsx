@@ -6,27 +6,22 @@ import type { PortfolioData } from "../lib/types";
 import { DEFAULT_DATA } from "../lib/defaults";
 
 export default function BuilderPage() {
-  // ✅ start with null: no default written to storage
   const [data, setData] = useState<PortfolioData | null>(null);
 
   useEffect(() => {
-    // load once; loadData should return either stored data or DEFAULT_DATA
     const stored = loadData();
     setData(stored);
   }, []);
 
   useEffect(() => {
-    // ✅ do not save until we have real data loaded
     if (!data) return;
     saveData(data);
   }, [data]);
 
   const handleReset = () => {
     resetData();
-    setData(DEFAULT_DATA); // after reset, user starts fresh; saving happens from next edits
   };
 
-  // Optional: prevent rendering form until data is ready
   if (!data) {
     return (
       <div className="mx-auto w-full max-w-6xl px-4 py-10">

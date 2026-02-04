@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 const NAVY = "#0f1b3d";
 const WINE = "#7a1f2b";
 

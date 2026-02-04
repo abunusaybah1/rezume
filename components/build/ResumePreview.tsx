@@ -1,14 +1,10 @@
-import type { PortfolioData } from "@/lib/types";
-
-type Props = {
-  data: PortfolioData;
-  template?: "classic" | "modern";
-};
+import React from "react";
+import type { PortfolioData, ResumePreviewProps } from "@/lib/types";
 
 const NAVY = "#0f1b3d";
 const WINE = "#7a1f2b";
 
-export default function ResumePreview({ data, template = "classic" }: Props) {
+export default function ResumePreview({ data, template = "classic" }: ResumePreviewProps) {
   if (template === "modern") {
     return <ModernResume data={data} />;
   }
@@ -23,7 +19,6 @@ function ClassicResume({ data }: { data: PortfolioData }) {
 
   return (
     <div className="w-full">
-      {/* Header */}
       <header className="pb-4 border-b border-slate-200 print-avoid-break">
         <h1 className="text-3xl font-bold tracking-tight" style={{ color: NAVY }}>
           {name}
@@ -38,7 +33,6 @@ function ClassicResume({ data }: { data: PortfolioData }) {
       </header>
 
       <main className="pt-4 space-y-6">
-        {/* Summary */}
         <section className="print-avoid-break">
           <SectionTitle title="Summary" />
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
@@ -48,7 +42,6 @@ function ClassicResume({ data }: { data: PortfolioData }) {
           </p>
         </section>
 
-        {/* Skills */}
         <section className="print-avoid-break">
           <SectionTitle title="Skills" />
           {data.skills?.length ? (
@@ -68,10 +61,8 @@ function ClassicResume({ data }: { data: PortfolioData }) {
           )}
         </section>
 
-        {/* Optional page break if you want Projects to start on new page in print */}
         <div className="hidden print:block print-page-break" />
 
-        {/* Projects */}
         <section>
           <SectionTitle title="Projects" />
           {data.projects?.length ? (
@@ -133,7 +124,6 @@ function ModernResume({ data }: { data: PortfolioData }) {
 
   return (
     <div className="w-full">
-      {/* Modern header strip */}
       <header className="print-avoid-break">
         <div className="rounded-xl border border-slate-200 overflow-hidden">
           <div className="px-6 py-5 text-white" style={{ backgroundColor: NAVY }}>
@@ -171,7 +161,6 @@ function ModernResume({ data }: { data: PortfolioData }) {
                 </section>
               </div>
 
-              {/* Right */}
               <div className="md:col-span-2 space-y-6">
                 <section className="print-avoid-break">
                   <ModernTitle title="Summary" />

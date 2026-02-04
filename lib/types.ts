@@ -26,3 +26,8 @@ export interface BuilderProps{
     data: PortfolioData;
     onChange: (data:PortfolioData) => void;
 }
+
+export interface ResumePreviewProps{
+    data: PortfolioData;
+    template?: "classic" | "modern";
+}

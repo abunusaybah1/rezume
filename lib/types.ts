@@ -19,6 +19,7 @@ export interface PortfolioData{
     skills: string[];
     projects: Project[];
     theme: Theme;
+    summary: string;    
 }
 
 export interface BuilderProps{

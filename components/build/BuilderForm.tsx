@@ -1,12 +1,7 @@
 import { useState } from "react";
-import type { PortfolioData, ProjectItem } from "../lib/types";
+import type { BuilderProps, PortfolioData, Project } from "@/lib/types";
 
-type Props = {
-  data: PortfolioData;
-  onChange: (next: PortfolioData) => void;
-};
-
-export default function BuilderForm({ data, onChange }: Props) {
+export default function BuilderForm({ data, onChange }: BuilderProps) {
   const [skillText, setSkillText] = useState("");
 
   const update = <K extends keyof PortfolioData>(key: K, value: PortfolioData[K]) => {
@@ -14,30 +9,32 @@ export default function BuilderForm({ data, onChange }: Props) {
   };
 
   const addSkill = () => {
-    const s = skillText.trim();
-    if (!s) return;
+    const newSkill = skillText.trim();
+    if (!newSkill) return;
 
-    const exists = data.skills.some((x) => x.toLowerCase() === s.toLowerCase());
+    const exists = data.skills.some((skill) => skill.toLowerCase() === newSkill.toLowerCase());
     if (exists) return;
 
-    update("skills", [s, ...data.skills]);
+    update("skills", [newSkill, ...data.skills]);
     setSkillText("");
   };
 
   const removeSkill = (skill: string) => {
-    update("skills", data.skills.filter((s) => s !== skill));
+    update("skills", data.skills.filter((newSkill) => newSkill !== skill));
   };
 
   const addProject = () => {
-    const newProject: ProjectItem = {
+    const newProject: Project = {
       title: "",
       description: "",
       link: "",
+      tech: "",
+      id:"",
     };
     update("projects", [newProject, ...data.projects]);
   };
 
-  const updateProject = (index: number, patch: Partial<ProjectItem>) => {
+  const updateProject = (index: number, patch: Partial<Project>) => {
     const next = [...data.projects];
     next[index] = { ...next[index], ...patch };
     update("projects", next);
@@ -49,11 +46,11 @@ export default function BuilderForm({ data, onChange }: Props) {
 
   return (
     <div className="space-y-6">
-      {/* Personal */}
+     
       <section className="space-y-3">
         <div>
           <h2 className="text-base font-semibold text-slate-900">Personal Info</h2>
-          <p className="text-sm text-slate-600">This appears at the top of your Rezume.</p>
+          <p className="text-sm text-slate-600">This appears at the top of your Resume.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -104,7 +101,7 @@ export default function BuilderForm({ data, onChange }: Props) {
         </Field>
       </section>
 
-      {/* Skills */}
+     
       <section className="space-y-3 border-t border-slate-100 pt-5">
         <div className="flex items-center justify-between gap-3">
           <div>
@@ -144,7 +141,7 @@ export default function BuilderForm({ data, onChange }: Props) {
         </div>
       </section>
 
-      {/* Projects */}
+      
       <section className="space-y-3 border-t border-slate-100 pt-5">
         <div className="flex items-center justify-between gap-3">
           <div>

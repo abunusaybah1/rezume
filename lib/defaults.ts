@@ -5,6 +5,7 @@ export const DEFAULT_DATA: PortfolioData = {
   role: "Frontend Developer",
   location: "Lagos, Nigeria",
   email: "you@example.com",
+  summary: "A brief summary about yourself.",
   github: "https://github.com/yourusername",
   linkedin: "https://linkedin.com/in/yourusername",
   about:

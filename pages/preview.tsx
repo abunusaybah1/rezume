@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import ResumePreview from "@/components/build/ResumePreview";
 import { loadData, resetData } from "@/lib/storage";
 import type { PortfolioData } from "@/lib/types";
 import { DEFAULT_DATA } from "@/lib/defaults";
-import Head from "next/head";
 
 export default function PreviewPage() {
   const [data, setData] = useState<PortfolioData>(DEFAULT_DATA);
+  const [template, setTemplate] = useState<"classic" | "modern">("classic");
 
   useEffect(() => {
     setData(loadData());
@@ -19,27 +20,54 @@ export default function PreviewPage() {
   };
 
   const downloadPDF = () => {
-    window.print(); // Save as PDF
+    window.print();
   };
+
+  const title = data.fullName?.trim()
+    ? `${data.fullName} – Rezume`
+    : "Rezume";
 
   return (
     <>
       <Head>
-        <title>
-          {data.fullName?.trim()
-            ? `${data.fullName} – Rezume`
-            : "Rezume – Resume"}
-        </title>
+        <title>{title}</title>
       </Head>
 
-      <div className="mx-auto w-full max-w-6xl px-4 py-8 print:p-0 print:max-w-none">
-        {/* actions (do NOT print) */}
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 print:max-w-none print:p-0">
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between print:hidden">
           <div>
             <h1 className="text-2xl font-bold text-slate-900">Preview</h1>
+            <p className="text-sm text-slate-600">
+              Tip: In print settings, turn off “Headers and footers” for a clean PDF.
+            </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex rounded-lg border border-slate-200 bg-white p-1">
+              <button
+                type="button"
+                onClick={() => setTemplate("classic")}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md ${
+                  template === "classic"
+                    ? "bg-slate-900 text-white"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                Classic
+              </button>
+              <button
+                type="button"
+                onClick={() => setTemplate("modern")}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md ${
+                  template === "modern"
+                    ? "bg-slate-900 text-white"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                Modern
+              </button>
+            </div>
+
             <Link
               href="/builder"
               className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
@@ -64,11 +92,12 @@ export default function PreviewPage() {
             </button>
           </div>
         </div>
-
-        {/* “paper” */}
         <div className="mx-auto max-w-3xl print:max-w-none">
-          <div className="bg-white border border-slate-200 rounded-xl p-5 print:border-0 print:rounded-none print:p-0">
-            <ResumePreview data={data} />
+          <div
+            id="pdf-area"
+            className="bg-white border border-slate-200 rounded-xl p-6 print:border-0 print:rounded-none print:p-0"
+          >
+            <ResumePreview data={data} template={template} />
           </div>
         </div>
       </div>

@@ -3,24 +3,37 @@ import BuilderForm from "@/components/build/BuilderForm";
 import ResumePreview from "@/components/build/ResumePreview";
 import { loadData, saveData, resetData } from "../lib/storage";
 import type { PortfolioData } from "../lib/types";
-import { DEFAULT_DATA } from "../lib/defaults"; 
+import { DEFAULT_DATA } from "../lib/defaults";
 
 export default function BuilderPage() {
-  const [data, setData] = useState<PortfolioData>(DEFAULT_DATA);
+  // ✅ start with null: no default written to storage
+  const [data, setData] = useState<PortfolioData | null>(null);
 
   useEffect(() => {
+    // load once; loadData should return either stored data or DEFAULT_DATA
     const stored = loadData();
     setData(stored);
   }, []);
 
   useEffect(() => {
+    // ✅ do not save until we have real data loaded
+    if (!data) return;
     saveData(data);
   }, [data]);
 
   const handleReset = () => {
     resetData();
-    setData(DEFAULT_DATA);
+    setData(DEFAULT_DATA); // after reset, user starts fresh; saving happens from next edits
   };
+
+  // Optional: prevent rendering form until data is ready
+  if (!data) {
+    return (
+      <div className="mx-auto w-full max-w-6xl px-4 py-10">
+        <p className="text-sm text-slate-600">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8">
@@ -42,12 +55,10 @@ export default function BuilderPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <BuilderForm data={data} onChange={setData} />
         </div>
 
-       
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <ResumePreview data={data} />
         </div>

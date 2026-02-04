@@ -1,86 +1,77 @@
 import type { PortfolioData } from "@/lib/types";
 
-type Props = {
-  data: PortfolioData;
-};
+type Props = { data: PortfolioData };
+
+const NAVY = "#0f1b3d";
+const WINE = "#7a1f2b";
 
 export default function ResumePreview({ data }: Props) {
   const name = data.fullName?.trim() || "Your Name";
   const role = data.role?.trim() || "Your Role / Title";
-  const email = data.email?.trim() || "you@email.com";
-  const location = data.location?.trim() || "Lagos, Nigeria";
+
+  const email = data.email?.trim();
+  const location = data.location?.trim();
 
   return (
-    <div className="w-full">
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-        {/* Top Bar */}
-        <div className="bg-[#0f1b3d] px-6 py-5 text-white">
-          <h2 className="text-2xl font-bold leading-tight">{name}</h2>
-          <p className="mt-1 text-sm opacity-90">{role}</p>
+    <div className="w-full print:text-black">
+      {/* Resume "paper" */}
+      <div className="mx-auto w-full bg-white">
+        {/* Header */}
+        <header className="pb-4 border-b border-slate-200">
+          <h1 className="text-3xl font-bold tracking-tight" style={{ color: NAVY }}>
+            {name}
+          </h1>
+          <p className="mt-1 text-sm font-medium text-slate-700">{role}</p>
 
-          <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs opacity-90">
-            <span>{email}</span>
-            <span>•</span>
-            <span>{location}</span>
+          <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+            {email ? <span>{email}</span> : null}
+            {email && location ? <span className="text-slate-400">•</span> : null}
+            {location ? <span>{location}</span> : null}
           </div>
-        </div>
+        </header>
 
         {/* Body */}
-        <div className="space-y-6 px-6 py-6">
+        <main className="pt-4 space-y-6">
           {/* Summary */}
           <section>
-            <div className="mb-2 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#7a1f2b]" />
-              <h3 className="text-sm font-semibold text-slate-900">Summary</h3>
-            </div>
-
-            <p className="text-sm leading-relaxed text-slate-700">
+            <SectionTitle title="Summary" />
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
               {data.summary?.trim()
                 ? data.summary
-                : "Write 2–4 lines about yourself (your strengths, what you build, and what you’re looking for)."}
+                : "Write a short professional summary (2–4 lines)."}
             </p>
           </section>
 
           {/* Skills */}
           <section>
-            <div className="mb-2 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#7a1f2b]" />
-              <h3 className="text-sm font-semibold text-slate-900">Skills</h3>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {data.skills?.length ? (
-                data.skills.map((s) => (
+            <SectionTitle title="Skills" />
+            {data.skills?.length ? (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {data.skills.map((s) => (
                   <span
                     key={s}
-                    className="rounded-full bg-[#7a1f2b]/10 px-3 py-1 text-xs font-medium text-[#7a1f2b]"
+                    className="rounded-md border border-slate-200 px-2 py-1 text-xs font-medium text-slate-700"
+                    style={{ borderLeft: `3px solid ${WINE}` }}
                   >
                     {s}
                   </span>
-                ))
-              ) : (
-                <p className="text-sm text-slate-500">No skills added yet.</p>
-              )}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-2 text-sm text-slate-600">No skills added yet.</p>
+            )}
           </section>
 
           {/* Projects */}
           <section>
-            <div className="mb-3 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#7a1f2b]" />
-              <h3 className="text-sm font-semibold text-slate-900">Projects</h3>
-            </div>
-
-            <div className="space-y-3">
-              {data.projects?.length ? (
-                data.projects.map((p, idx) => (
-                  <div
-                    key={p.id || `${idx}`}
-                    className="rounded-xl border border-slate-200 p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
+            <SectionTitle title="Projects" />
+            {data.projects?.length ? (
+              <div className="mt-3 space-y-4">
+                {data.projects.map((p, idx) => (
+                  <div key={p.id || idx} className="pb-3 border-b border-slate-100 last:border-b-0">
+                    <div className="flex items-start justify-between gap-4">
                       <p className="text-sm font-semibold text-slate-900">
-                        {p.title?.trim() ? p.title : `Project #${idx + 1}`}
+                        {p.title?.trim() ? p.title : `Project ${idx + 1}`}
                       </p>
 
                       {p.link?.trim() ? (
@@ -88,44 +79,45 @@ export default function ResumePreview({ data }: Props) {
                           href={p.link}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-xs font-medium text-[#7a1f2b] hover:underline"
+                          className="text-sm font-medium hover:underline"
+                          style={{ color: WINE }}
                         >
-                          View
+                          Link
                         </a>
                       ) : null}
                     </div>
 
                     {p.description?.trim() ? (
-                      <p className="mt-2 text-sm text-slate-700 leading-relaxed">
-                        {p.description}
-                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-700">{p.description}</p>
                     ) : (
-                      <p className="mt-2 text-sm text-slate-500">
+                      <p className="mt-1 text-sm text-slate-600">
                         Add a short description of what the project does.
                       </p>
                     )}
 
-                    {/* Tech (optional) */}
                     {p.tech?.trim() ? (
-                      <p className="mt-2 text-xs text-slate-600">
-                        <span className="font-semibold text-slate-700">Tech:</span>{" "}
-                        {p.tech}
+                      <p className="mt-1 text-xs text-slate-600">
+                        <span className="font-semibold text-slate-700">Tech:</span> {p.tech}
                       </p>
                     ) : null}
                   </div>
-                ))
-              ) : (
-                <p className="text-sm text-slate-500">No projects added yet.</p>
-              )}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-2 text-sm text-slate-600">No projects added yet.</p>
+            )}
           </section>
-        </div>
-
-        {/* Footer */}
-        <div className="border-t border-slate-100 px-6 py-4 text-xs text-slate-500">
-          Generated with <span className="font-semibold text-[#7a1f2b]">Rezume</span>
-        </div>
+        </main>
       </div>
+    </div>
+  );
+}
+
+function SectionTitle({ title }: { title: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#7a1f2b" }} />
+      <h2 className="text-sm font-bold uppercase tracking-wide text-slate-900">{title}</h2>
     </div>
   );
 }

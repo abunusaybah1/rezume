@@ -6,7 +6,7 @@ const WINE = "#7a1f2b";
 export default function HomePage() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-10">
-      {/* HERO */}
+    
       <section className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700">
@@ -34,21 +34,14 @@ export default function HomePage() {
 
             <Link
               href="/preview"
-              className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-lg border border-wine bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
             >
               View Preview
             </Link>
           </div>
-
-          <div className="flex flex-wrap gap-2 text-xs text-slate-500">
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Next.js</span>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">TypeScript</span>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Tailwind CSS</span>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">LocalStorage</span>
-          </div>
         </div>
 
-        {/* HERO PREVIEW CARD */}
+       
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="rounded-xl p-5 text-white" style={{ backgroundColor: NAVY }}>
             <p className="text-xs opacity-90">Preview</p>
@@ -84,17 +77,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRUST / STATS */}
       <section className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Stat label="Built for speed" value="Instant updates" />
         <Stat label="Data safety" value="Auto-saved" />
         <Stat label="Output style" value="Clean & readable" />
       </section>
 
-      {/* FEATURES */}
+   
       <section className="mt-16">
         <div className="max-w-2xl">
-          <h2 className="text-2xl font-bold text-slate-900">Everything you need — nothing you don’t</h2>
+          <h2 className="text-2xl font-bold text-slate-900">Everything you need... Nothing you don&apos;t</h2>
           <p className="mt-2 text-slate-600">
             Rezume focuses on the core sections that make a resume strong: profile, summary, skills, and projects.
           </p>
@@ -120,7 +112,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+   
       <section className="mt-16">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-slate-900">How it works</h2>
@@ -147,34 +139,7 @@ export default function HomePage() {
           />
         </div>
       </section>
-
-      {/* TEMPLATES TEASER */}
-      <section className="mt-16 rounded-2xl border border-slate-200 bg-white p-6">
-        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-xl font-bold text-slate-900">Templates (coming next)</h2>
-            <p className="mt-1 text-sm text-slate-600">
-              More layouts and styles so you can pick what fits your career.
-            </p>
-          </div>
-
-          <Link
-            href="/builder"
-            className="inline-flex w-fit items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
-            style={{ backgroundColor: NAVY }}
-          >
-            Build Yours Now
-          </Link>
-        </div>
-
-        <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
-          <TemplateMock title="Classic" desc="Simple and standard." />
-          <TemplateMock title="Modern" desc="Bold headers and clean spacing." />
-          <TemplateMock title="Minimal" desc="Compact and focused." />
-        </div>
-      </section>
-
-      {/* FAQ */}
+    
       <section className="mt-16">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-slate-900">FAQ</h2>
@@ -203,7 +168,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      
       <section className="mt-16 rounded-2xl p-8 text-white" style={{ backgroundColor: NAVY }}>
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold">Ready to build your resume?</h2>

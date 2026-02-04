@@ -29,7 +29,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
       description: "",
       link: "",
       tech: "",
-      id:"",
+      id:crypto.randomUUID(),
     };
     update("projects", [newProject, ...data.projects]);
   };

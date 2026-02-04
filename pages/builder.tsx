@@ -42,12 +42,12 @@ export default function BuilderPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Form */}
+
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <BuilderForm data={data} onChange={setData} />
         </div>
 
-        {/* Preview */}
+       
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <ResumePreview data={data} />
         </div>

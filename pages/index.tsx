@@ -5,21 +5,27 @@ const WINE = "#7a1f2b";
 export default function HomePage() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-10">
-    
       <section className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700">
-            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: WINE }} />
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: WINE }}
+            />
             Live preview • Auto-save • Clean output
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl" style={{ color: NAVY }}>
+          <h1
+            className="text-4xl font-bold tracking-tight sm:text-5xl"
+            style={{ color: NAVY }}
+          >
             Rezume helps you build a clean, professional resume in minutes.
           </h1>
 
           <p className="text-base leading-relaxed text-slate-600">
-            Enter your details, add skills and projects, and see your resume update instantly.
-            Rezume saves your progress automatically, so you can pick up anytime.
+            Enter your details, add skills and projects, and see your resume
+            update instantly. Rezume saves your progress automatically, so you
+            can pick up anytime.
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -40,9 +46,11 @@ export default function HomePage() {
           </div>
         </div>
 
-       
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="rounded-xl p-5 text-white" style={{ backgroundColor: NAVY }}>
+          <div
+            className="rounded-xl p-5 text-white"
+            style={{ backgroundColor: NAVY }}
+          >
             <p className="text-xs opacity-90">Preview</p>
             <h2 className="mt-1 text-xl font-bold">Your Name</h2>
             <p className="text-sm opacity-90">Frontend Developer</p>
@@ -57,12 +65,18 @@ export default function HomePage() {
           <div className="mt-5 space-y-4">
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: WINE }} />
-                <p className="text-sm font-semibold text-slate-900">Why Rezume?</p>
+                <span
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: WINE }}
+                />
+                <p className="text-sm font-semibold text-slate-900">
+                  Why Rezume?
+                </p>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Most resume tools feel heavy and confusing. Rezume keeps it simple:
-                type your info, preview instantly, and keep things clean.
+                Most resume tools feel heavy and confusing. Rezume keeps it
+                simple: type your info, preview instantly, and keep things
+                clean.
               </p>
             </div>
 
@@ -70,7 +84,10 @@ export default function HomePage() {
               <FeatureMini title="Live Preview" desc="See changes instantly." />
               <FeatureMini title="Auto Save" desc="Your work stays safe." />
               <FeatureMini title="Clean Layout" desc="Professional output." />
-              <FeatureMini title="Fast Editing" desc="Add skills/projects quick." />
+              <FeatureMini
+                title="Fast Editing"
+                desc="Add skills/projects quick."
+              />
             </div>
           </div>
         </div>
@@ -82,12 +99,14 @@ export default function HomePage() {
         <Stat label="Output style" value="Clean & readable" />
       </section>
 
-   
       <section className="mt-16">
         <div className="max-w-2xl">
-          <h2 className="text-2xl font-bold text-slate-900">Everything you need... Nothing you don&apos;t</h2>
+          <h2 className="text-2xl font-bold text-slate-900">
+            Everything you need... Nothing you don&apos;t
+          </h2>
           <p className="mt-2 text-slate-600">
-            Rezume focuses on the core sections that make a resume strong: profile, summary, skills, and projects.
+            Rezume focuses on the core sections that make a resume strong:
+            profile, summary, skills, and projects.
           </p>
         </div>
 
@@ -111,7 +130,6 @@ export default function HomePage() {
         </div>
       </section>
 
-   
       <section className="mt-16">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-slate-900">How it works</h2>
@@ -138,13 +156,11 @@ export default function HomePage() {
           />
         </div>
       </section>
-    
+
       <section className="mt-16">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold text-slate-900">FAQ</h2>
-          <p className="mt-2 text-slate-600">
-            Quick answers before you start.
-          </p>
+          <p className="mt-2 text-slate-600">Quick answers before you start.</p>
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -167,8 +183,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      
-      <section className="mt-16 rounded-2xl p-8 text-white" style={{ backgroundColor: NAVY }}>
+      <section
+        className="mt-16 rounded-2xl p-8 text-white"
+        style={{ backgroundColor: NAVY }}
+      >
         <div className="max-w-2xl">
           <h2 className="text-2xl font-bold">Ready to build your resume?</h2>
           <p className="mt-2 text-sm opacity-90">
@@ -199,8 +217,12 @@ export default function HomePage() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Rezume. All rights reserved.</p>
           <div className="flex gap-4">
-            <Link href="/builder" className="hover:text-slate-700">Builder</Link>
-            <Link href="/preview" className="hover:text-slate-700">Preview</Link>
+            <Link href="/builder" className="hover:text-slate-700">
+              Builder
+            </Link>
+            <Link href="/preview" className="hover:text-slate-700">
+              Preview
+            </Link>
           </div>
         </div>
       </footer>
@@ -235,11 +257,21 @@ function FeatureCard({ title, desc }: { title: string; desc: string }) {
   );
 }
 
-function StepCard({ step, title, desc }: { step: string; title: string; desc: string }) {
+function StepCard({
+  step,
+  title,
+  desc,
+}: {
+  step: string;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6">
-      <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white"
-           style={{ backgroundColor: WINE }}>
+      <div
+        className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white"
+        style={{ backgroundColor: WINE }}
+      >
         {step}
       </div>
       <p className="text-sm font-semibold text-slate-900">{title}</p>

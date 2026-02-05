@@ -2,30 +2,30 @@
 
 ## Overview
 
-Rezume is a frontend web application that helps users create a clean, professional resume by filling in their details through a simple form. As users type, a live preview of the resume updates instantly. The app is designed to be fast, minimal, and easy to use, with automatic data persistence in the browser.
+Rezume is a frontend web application for building a clean, professional resume through a simple form with instant live preview. As users type, the resume updates in real time. Data is saved automatically in the browser, so users can leave and continue later without losing progress.
 
-Rezume focuses on core resume sections (profile, summary, skills, and projects) and provides multiple layout templates for a polished final result — without requiring any account or backend.
+Rezume focuses on essential resume sections and produces a clean, print-ready layout without requiring any account or backend.
 
 ## Purpose
 
 The goal of this project is to:
 
-- Build a practical, real-world frontend product
+- Build a practical frontend product
 - Apply component-based architecture
-- Manage form state and live previews
+- Manage form state with live previews
 - Persist user data in the browser
 - Design a clean, responsive user interface
-- Prepare the application for production-ready use
+- Deliver a production-ready user experience
 
 ## Features
 
-- Resume form (personal details, summary, skills, projects, etc)
+- Resume form (personal info, experience, contact, links, summary, skills, languages, projects)
 - Live resume preview while typing
 - Add and remove skills dynamically
+- Add and remove languages dynamically
 - Add and remove projects dynamically
-- Multiple resume templates (Classic and Modern)
 - Automatic data persistence using browser localStorage
-- Full preview page for a clean, printable view
+- Clean preview page for printing
 - Export resume using Print → Save as PDF
 - Responsive layout for desktop and mobile screens
 
@@ -34,17 +34,17 @@ The goal of this project is to:
 - Next.js (Pages Router)
 - TypeScript
 - Tailwind CSS
-- Browser LocalStorage
+- Browser localStorage
 
 ## How It Works
 
 1. Open the Rezume application.
-2. Enter personal details, summary, skills, and project information.
+2. Enter your personal information, summary, skills, languages, links, and projects.
 3. The resume preview updates instantly as you type.
 4. Your data is saved automatically in the browser.
-5. Switch between resume templates on the preview page.
+5. Open the Preview page for a clean printable view.
 6. Export your resume using Print → Save as PDF.
-7. Your data remains available after refreshing or reopening the app.
+7. Your data remains available after refresh or revisit.
 
 ## Frontend Concepts Demonstrated
 

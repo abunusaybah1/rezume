@@ -19,7 +19,11 @@ export interface PortfolioData{
     skills: string[];
     languages: string[];
     projects: Project[];
-    summary: string;   
+    summary: string;
+    education: {
+        school: string;
+        certificate: string;
+    };
 }
 
 export interface BuilderProps{
@@ -29,10 +33,12 @@ export interface BuilderProps{
 
 export interface ResumePreviewProps{
     data: PortfolioData;
-    template?: "classic" | "modern";
 }
 
 export interface Fields{
     label: string;
   children: React.ReactNode;
 }
+
+
+

@@ -3,24 +3,7 @@
 @media print {
   @page {
     size: A4;
-    margin: 12mm;
-  }
-
-  html,
-  body {
-    background: #fff !important;
-  }
-
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-}
-
-@media print {
-  @page {
-    size: A4;
-    margin: 12mm;
+    margin: 10mm;
   }
 
   html,
@@ -43,7 +26,7 @@
   page-break-inside: avoid;
 }
 
-.print-page-break {
+/* .print-page-break {
   break-before: page;
   page-break-before: always;
-}
+} */

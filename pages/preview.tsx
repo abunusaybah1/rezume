@@ -8,7 +8,6 @@ import { DEFAULT_DATA } from "@/lib/defaults";
 
 export default function PreviewPage() {
   const [data, setData] = useState<PortfolioData>(DEFAULT_DATA);
-  const [template, setTemplate] = useState<"classic" | "modern">("classic");
 
   useEffect(() => {
     setData(loadData());
@@ -23,9 +22,7 @@ export default function PreviewPage() {
     window.print();
   };
 
-  const title = data.fullName?.trim()
-    ? `${data.fullName} – Rezume`
-    : "Rezume";
+  const title = data.fullName?.trim() ? `${data.fullName} – Rezume` : "Rezume";
 
   return (
     <>
@@ -38,36 +35,12 @@ export default function PreviewPage() {
           <div>
             <h1 className="text-2xl font-bold text-slate-900">Preview</h1>
             <p className="text-sm text-slate-600">
-              Tip: In print settings, turn off “Headers and footers” for a clean PDF.
+              Tip: In print settings, turn off "Headers and footers" for a clean
+              PDF.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <div className="flex rounded-lg border border-slate-200 bg-white p-1">
-              <button
-                type="button"
-                onClick={() => setTemplate("classic")}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md ${
-                  template === "classic"
-                    ? "bg-slate-900 text-white"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`}
-              >
-                Classic
-              </button>
-              <button
-                type="button"
-                onClick={() => setTemplate("modern")}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md ${
-                  template === "modern"
-                    ? "bg-slate-900 text-white"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`}
-              >
-                Modern
-              </button>
-            </div>
-
             <Link
               href="/builder"
               className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
@@ -92,12 +65,13 @@ export default function PreviewPage() {
             </button>
           </div>
         </div>
+
         <div className="mx-auto max-w-3xl print:max-w-none">
           <div
             id="pdf-area"
             className="bg-white border border-slate-200 rounded-xl p-6 print:border-0 print:rounded-none print:p-0"
           >
-            <ResumePreview data={data} template={template} />
+            <ResumePreview data={data} />
           </div>
         </div>
       </div>

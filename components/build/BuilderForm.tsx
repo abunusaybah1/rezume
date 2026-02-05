@@ -21,7 +21,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
     );
     if (exists) return;
 
-    update("skills", [newSkill, ...(data.skills || [])]);
+    update("skills", [...(data.skills || []), newSkill]);
     setSkillText("");
   };
 
@@ -41,7 +41,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
     );
     if (exists) return;
 
-    update("languages", [newLang, ...(data.languages || [])]);
+    update("languages", [...(data.languages || []), newLang]);
     setLangText("");
   };
 

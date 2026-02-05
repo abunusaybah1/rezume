@@ -10,8 +10,8 @@ export interface PortfolioData{
     role: string;
     location: string;
     email: string;
-    yoe: number;
-    phone: number;
+    yoe: string;
+    phone: string;
     portfolio: string;
     linkedin: string;
     github: string;

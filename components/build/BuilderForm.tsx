@@ -16,19 +16,19 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
     const newSkill = skillText.trim();
     if (!newSkill) return;
 
-    const exists = data.skills.some(
+    const exists = (data.skills || []).some(
       (skill) => skill.toLowerCase() === newSkill.toLowerCase(),
     );
     if (exists) return;
 
-    update("skills", [newSkill, ...data.skills]);
+    update("skills", [newSkill, ...(data.skills || [])]);
     setSkillText("");
   };
 
   const removeSkill = (skill: string) => {
     update(
       "skills",
-      data.skills.filter((newSkill) => newSkill !== skill),
+      (data.skills || []).filter((newSkill) => newSkill !== skill),
     );
   };
 
@@ -36,19 +36,19 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
     const newLang = langText.trim();
     if (!newLang) return;
 
-    const exists = data.languages.some(
+    const exists = (data.languages || []).some(
       (lang) => lang.toLowerCase() === newLang.toLowerCase(),
     );
     if (exists) return;
 
-    update("languages", [newLang, ...data.languages]);
+    update("languages", [newLang, ...(data.languages || [])]);
     setLangText("");
   };
 
   const removeLang = (lang: string) => {
     update(
       "languages",
-      data.languages.filter((newLang) => newLang !== lang),
+      (data.languages || []).filter((newLang) => newLang !== lang),
     );
   };
 
@@ -59,11 +59,11 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
       link: "",
       id: crypto.randomUUID(),
     };
-    update("projects", [newProject, ...data.projects]);
+    update("projects", [newProject, ...(data.projects || [])]);
   };
 
   const updateProject = (index: number, patch: Partial<Project>) => {
-    const next = [...data.projects];
+    const next = [...(data.projects || [])];
     next[index] = { ...next[index], ...patch };
     update("projects", next);
   };
@@ -71,7 +71,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
   const removeProject = (index: number) => {
     update(
       "projects",
-      data.projects.filter((_, i) => i !== index),
+      (data.projects || []).filter((_, i) => i !== index),
     );
   };
 
@@ -108,10 +108,9 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
 
           <Field label="Year(s) of Experience">
             <input
-              type="number"
               className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#7a1f2b]/20"
               value={data.yoe}
-              onChange={(e) => update("yoe", +e.target.value)}
+              onChange={(e) => update("yoe", e.target.value)}
               placeholder="e.g. 5"
             />
           </Field>
@@ -122,6 +121,15 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
               value={data.email}
               onChange={(e) => update("email", e.target.value)}
               placeholder="you@email.com"
+            />
+          </Field>
+
+          <Field label="Phone">
+            <input
+              className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#7a1f2b]/20"
+              value={data.phone}
+              onChange={(e) => update("phone", e.target.value)}
+              placeholder="e.g. +234 801 234 5678"
             />
           </Field>
 
@@ -152,7 +160,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
               Languages
             </h2>
             <p className="text-sm text-slate-600">
-              Add all the languages you speak and can communicate with.
+              Add all the languages you can communicate with.
             </p>
           </div>
         </div>
@@ -174,7 +182,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {data.languages.map((s) => (
+          {(data.languages || []).map((s) => (
             <button
               key={s}
               type="button"
@@ -253,7 +261,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {data.skills.map((s) => (
+          {(data.skills || []).map((s) => (
             <button
               key={s}
               type="button"
@@ -284,7 +292,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
         </div>
 
         <div className="space-y-4">
-          {data.projects.map((p, i) => (
+          {(data.projects || []).map((p, i) => (
             <div key={i} className="rounded-xl border border-slate-200 p-4">
               <div className="mb-3 flex items-center justify-between">
                 <p className="text-sm font-semibold text-slate-900">

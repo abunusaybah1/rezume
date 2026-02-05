@@ -1,11 +1,8 @@
-export type Theme = "light" | "dark"
-
 export interface Project{
     id: string;
     title: string;
     description: string;
     link: string;
-    tech: string;
 }
 
 export interface PortfolioData{
@@ -13,13 +10,16 @@ export interface PortfolioData{
     role: string;
     location: string;
     email: string;
+    yoe: number;
+    phone: number;
+    portfolio: string;
     linkedin: string;
     github: string;
     about: string;
     skills: string[];
+    languages: string[];
     projects: Project[];
-    theme: Theme;
-    summary: string;    
+    summary: string;   
 }
 
 export interface BuilderProps{
@@ -30,4 +30,9 @@ export interface BuilderProps{
 export interface ResumePreviewProps{
     data: PortfolioData;
     template?: "classic" | "modern";
+}
+
+export interface Fields{
+    label: string;
+  children: React.ReactNode;
 }

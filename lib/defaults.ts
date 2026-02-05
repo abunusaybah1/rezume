@@ -5,20 +5,14 @@ export const DEFAULT_DATA: PortfolioData = {
   role: "",
   location: "",
   email: "",
+  yoe: 0,
+  phone: 0,
   summary: "",
+  portfolio: "",
   github: "",
   linkedin: "",
-  about:
-    "",
+  about: "",
   skills: [],
-  projects: [
-    {
-      id: "",
-      title: "",
-      description: "",
-      link: "",
-      tech: "",
-    },
-  ],
-  theme: "light",
+  languages: [],
+  projects: [],
 };

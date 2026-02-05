@@ -20,6 +20,7 @@ export default function BuilderPage() {
 
   const handleReset = () => {
     resetData();
+    setData(DEFAULT_DATA);
   };
 
   if (!data) {

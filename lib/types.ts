@@ -20,10 +20,7 @@ export interface PortfolioData{
     languages: string[];
     projects: Project[];
     summary: string;
-    education: {
-        school: string;
-        certificate: string;
-    };
+    
 }
 
 export interface BuilderProps{

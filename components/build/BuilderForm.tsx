@@ -32,8 +32,7 @@ export default function BuilderForm({ data, onChange }: BuilderProps) {
     );
   };
 
-
-const addLang = () => {
+  const addLang = () => {
     const newLang = langText.trim();
     if (!newLang) return;
 
@@ -52,7 +51,6 @@ const addLang = () => {
       data.languages.filter((newLang) => newLang !== lang),
     );
   };
-
 
   const addProject = () => {
     const newProject: Project = {
@@ -147,13 +145,15 @@ const addLang = () => {
         </Field>
       </section>
 
-      
-      
-<section className="space-y-3 border-t border-slate-100 pt-5">
+      <section className="space-y-3 border-t border-slate-100 pt-5">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <h2 className="text-base font-semibold text-slate-900">Languages</h2>
-            <p className="text-sm text-slate-600">Add all the languages you speak and can communicate with.</p>
+            <h2 className="text-base font-semibold text-slate-900">
+              Languages
+            </h2>
+            <p className="text-sm text-slate-600">
+              Add all the languages you speak and can communicate with.
+            </p>
           </div>
         </div>
 
@@ -174,21 +174,19 @@ const addLang = () => {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {data.languages?.map((l) => (
+          {data.languages.map((s) => (
             <button
-              key={l}
+              key={s}
               type="button"
-              onClick={() => removeLang(l)}
+              onClick={() => removeLang(s)}
               className="rounded-full border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50"
               title="Click to remove"
             >
-              {l} <span className="text-slate-400">×</span>
+              {s} <span className="text-slate-400">×</span>
             </button>
           ))}
         </div>
       </section>
-
-
 
       <section className="space-y-3 border-t border-slate-100 pt-5">
         <div>
@@ -232,7 +230,9 @@ const addLang = () => {
         <div className="flex items-center justify-between gap-3">
           <div>
             <h2 className="text-base font-semibold text-slate-900">Skills</h2>
-            <p className="text-sm text-slate-600">Add all your available skills.</p>
+            <p className="text-sm text-slate-600">
+              Add all your available skills.
+            </p>
           </div>
         </div>
 
@@ -266,7 +266,6 @@ const addLang = () => {
           ))}
         </div>
       </section>
-
 
       <section className="space-y-3 border-t border-slate-100 pt-5">
         <div className="flex items-center justify-between gap-3">
@@ -340,10 +339,7 @@ const addLang = () => {
   );
 }
 
-function Field({
-  label,
-  children,
-}: Fields) {
+function Field({ label, children }: Fields) {
   return (
     <label className="block space-y-1">
       <span className="text-sm font-medium text-slate-700">{label}</span>

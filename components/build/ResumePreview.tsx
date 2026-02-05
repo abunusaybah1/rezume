@@ -4,7 +4,10 @@ import type { PortfolioData, ResumePreviewProps } from "@/lib/types";
 const NAVY = "#0f1b3d";
 const WINE = "#7a1f2b";
 
-export default function ResumePreview({ data, template = "classic" }: ResumePreviewProps) {
+export default function ResumePreview({
+  data,
+  template = "classic",
+}: ResumePreviewProps) {
   if (template === "modern") {
     return <ModernResume data={data} />;
   }
@@ -20,7 +23,10 @@ function ClassicResume({ data }: { data: PortfolioData }) {
   return (
     <div className="w-full">
       <header className="pb-4 border-b border-slate-200 print-avoid-break">
-        <h1 className="text-3xl font-bold tracking-tight" style={{ color: NAVY }}>
+        <h1
+          className="text-3xl font-bold tracking-tight"
+          style={{ color: NAVY }}
+        >
           {name}
         </h1>
         <p className="mt-1 text-sm font-medium text-slate-700">{role}</p>
@@ -99,18 +105,13 @@ function ClassicResume({ data }: { data: PortfolioData }) {
                       Add a short description of what the project does.
                     </p>
                   )}
-
-                  {p.tech?.trim() ? (
-                    <p className="mt-1 text-xs text-slate-600">
-                      <span className="font-semibold text-slate-700">Tech:</span>{" "}
-                      {p.tech}
-                    </p>
-                  ) : null}
                 </div>
               ))}
             </div>
           ) : (
-            <p className="mt-2 text-sm text-slate-600">No projects added yet.</p>
+            <p className="mt-2 text-sm text-slate-600">
+              No projects added yet.
+            </p>
           )}
         </section>
       </main>
@@ -126,13 +127,18 @@ function ModernResume({ data }: { data: PortfolioData }) {
     <div className="w-full">
       <header className="print-avoid-break">
         <div className="rounded-xl border border-slate-200 overflow-hidden">
-          <div className="px-6 py-5 text-white" style={{ backgroundColor: NAVY }}>
+          <div
+            className="px-6 py-5 text-white"
+            style={{ backgroundColor: NAVY }}
+          >
             <h1 className="text-3xl font-bold">{name}</h1>
             <p className="mt-1 text-sm opacity-90">{role}</p>
 
             <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm opacity-90">
               {data.email?.trim() ? <span>{data.email}</span> : null}
-              {data.email?.trim() && data.location?.trim() ? <span>•</span> : null}
+              {data.email?.trim() && data.location?.trim() ? (
+                <span>•</span>
+              ) : null}
               {data.location?.trim() ? <span>{data.location}</span> : null}
             </div>
           </div>
@@ -206,17 +212,12 @@ function ModernResume({ data }: { data: PortfolioData }) {
                               Add a short description of what the project does.
                             </p>
                           )}
-
-                          {p.tech?.trim() ? (
-                            <p className="mt-2 text-xs text-slate-600">
-                              <span className="font-semibold text-slate-700">Tech:</span>{" "}
-                              {p.tech}
-                            </p>
-                          ) : null}
                         </div>
                       ))
                     ) : (
-                      <p className="text-sm text-slate-600">No projects added yet.</p>
+                      <p className="text-sm text-slate-600">
+                        No projects added yet.
+                      </p>
                     )}
                   </div>
                 </section>
@@ -232,8 +233,13 @@ function ModernResume({ data }: { data: PortfolioData }) {
 function SectionTitle({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: WINE }} />
-      <h2 className="text-sm font-bold uppercase tracking-wide text-slate-900">{title}</h2>
+      <span
+        className="h-2 w-2 rounded-full"
+        style={{ backgroundColor: WINE }}
+      />
+      <h2 className="text-sm font-bold uppercase tracking-wide text-slate-900">
+        {title}
+      </h2>
     </div>
   );
 }
@@ -241,7 +247,10 @@ function SectionTitle({ title }: { title: string }) {
 function ModernTitle({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: WINE }} />
+      <span
+        className="h-2 w-2 rounded-full"
+        style={{ backgroundColor: WINE }}
+      />
       <h2 className="text-sm font-semibold text-slate-900">{title}</h2>
     </div>
   );
